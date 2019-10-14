@@ -9,7 +9,7 @@ def map (array)
   new_array
 end
 
-def reduce (array, start=nil)
+def reduce (array, start=nil)   #copied this from the youtube video because my way was passing all tests except the 10th one (returns true then a truthy value is present). Was returning 0 instead of True every single time. No clue how it passed evey other test with the same code, super frustrating.
   count = 0
   if !start
     start = array[0]

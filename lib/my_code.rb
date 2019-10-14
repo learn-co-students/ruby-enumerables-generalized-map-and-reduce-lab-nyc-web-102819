@@ -9,10 +9,15 @@ def map (array)
   new_array
 end
 
-def reduce (array, value=0)
-  array.length.times  do
-    |entry|
-    value = yield(value, array[entry])
+def reduce (array, start=nil)
+  count = 0
+  if !start
+    start = array[0]
+    count = 1
+  end
+  while count < array.length  do
+    start = yield(start, array[count])
+    count +=1
   end 
-  value
+  start
 end

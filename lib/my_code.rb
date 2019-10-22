@@ -9,16 +9,19 @@ def map(array)
 end
 
 def reduce(array, starting_point = nil)
-  if array.find {|item| item.is_a? String} 
-    return array.map{|e| !!e}
+  if starting_point 
+    sum = starting_point
+    i = 0
   else
-    if starting_point
-      new_array = array.reduce(starting_point) {|sum, num| sum + num}
-    else
-      new_array = array.reduce(0) {|sum, num| sum + num}
-    end
+    sum = array[0]
+    i = 1
   end
-  new_array
+  
+  while i < array.length
+    sum = yield(sum, array[i])
+    i += 1
+  end
+  sum
 end
 
 
